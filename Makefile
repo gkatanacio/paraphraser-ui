@@ -27,4 +27,4 @@ build:
 .PHONY: deploy
 deploy: .env.aws dist
 	docker run --rm -it --entrypoint sh -v ./dist:/aws/dist --env-file .env.aws amazon/aws-cli \
-	-c 'aws s3 sync dist s3://$$S3_STATIC_SITE_BUCKET --storage-class ONEZONE_IA && aws cloudfront create-invalidation --distribution-id $$CF_DISTRIBUTION_ID --paths "/*" --no-cli-pager'
+	-c 'aws s3 sync dist s3://$$S3_STATIC_SITE_BUCKET --delete --storage-class ONEZONE_IA && aws cloudfront create-invalidation --distribution-id $$CF_DISTRIBUTION_ID --paths "/*" --no-cli-pager'
