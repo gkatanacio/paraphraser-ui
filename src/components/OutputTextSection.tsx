@@ -30,7 +30,7 @@ export const OutputTextSection = ({
             <textarea rows={rows} cols={cols} value={text} readOnly />
           </label>
         </div>
-        <div className="col my-auto" style={{ paddingLeft: 5 }}>
+        <div className="col my-auto" style={{ paddingLeft: 8 }}>
           <CopyToClipboard text={text}>
             <button className="btn btn-sm btn-secondary">Copy</button>
           </CopyToClipboard>
