@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-import { PROVIDERS, TONES } from "../constants";
 import { paraphrase } from "../api/paraphraser";
 
-export const useApp = () => {
+export const useApp = (defaultProvider: string, defaultTone: string) => {
   const [alertMsg, setAlertMsg] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState(PROVIDERS[0]);
-  const [selectedTone, setSelectedTone] = useState(TONES[0]);
+  const [selectedProvider, setSelectedProvider] = useState(defaultProvider);
+  const [selectedTone, setSelectedTone] = useState(defaultTone);
   const [textToParaphrase, setTextToParaphrase] = useState("");
   const [paraphraseResult, setParaphraseResult] = useState("");
   const [awaitingResult, setAwaitingResult] = useState(false);

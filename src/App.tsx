@@ -1,5 +1,4 @@
 import "./App.css";
-import { PROVIDERS, TONES } from "./constants";
 import { Title } from "./components/Title";
 import { RepoLinks } from "./components/RepoLinks";
 import { Alert } from "./components/Alert";
@@ -7,6 +6,16 @@ import { Dropdown } from "./components/Dropdown";
 import { InputTextSection } from "./components/InputTextSection";
 import { OutputTextSection } from "./components/OutputTextSection";
 import { useApp } from "./hooks/useApp";
+
+const PROVIDERS = ["chatgpt", "gemini"];
+const TONES = [
+  "formal",
+  "amicable",
+  "fun",
+  "casual",
+  "sympathetic",
+  "persuasive",
+];
 
 const TEXTAREA_ROWS = 10;
 const TEXTAREA_COLS = 75;
@@ -26,7 +35,7 @@ export const App = () => {
     handleClickParaphrase,
     handleClickPrev,
     handleClickNext,
-  } = useApp();
+  } = useApp(PROVIDERS[0], TONES[0]);
 
   return (
     <div className="container">
