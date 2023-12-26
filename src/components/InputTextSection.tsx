@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import { Button } from "./Button";
+import { useInputTextSection } from "../hooks/useInputTextSection";
 
 interface Props {
   rows: number;
@@ -19,12 +18,7 @@ export const InputTextSection = ({
   onChange,
   onParaphrase,
 }: Props) => {
-  const [charCount, setCharCount] = useState(0);
-
-  const handleOnChange = (text: string) => {
-    setCharCount(text.length);
-    onChange(text);
-  };
+  const { charCount, handleOnChange } = useInputTextSection(onChange);
 
   return (
     <>
