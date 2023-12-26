@@ -68,8 +68,7 @@ export const useApp = (defaultProvider: string, defaultTone: string) => {
 
   const handleClickPrev = () => {
     if (historyIdx < 1) {
-      console.error("unexpected historyIdx in prev handler:", historyIdx);
-      return;
+      throw new Error("unexpected historyIdx in prev handler: " + historyIdx);
     }
     const prevIdx = historyIdx - 1;
     setParaphraseResult(history[prevIdx]);
