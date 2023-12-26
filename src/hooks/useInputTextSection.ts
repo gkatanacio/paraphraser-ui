@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export const useInputTextSection = (onChange: (text: string) => void) => {
   const [charCount, setCharCount] = useState(0);
 
