@@ -12,7 +12,7 @@ import { paraphrase } from "./api/paraphraser";
 const TEXTAREA_ROWS = 10;
 const TEXTAREA_COLS = 75;
 
-const PROVIDERS = ["chatgpt"];
+const PROVIDERS = ["chatgpt", "gemini"];
 const TONES = [
   "formal",
   "amicable",
