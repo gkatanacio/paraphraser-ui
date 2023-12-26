@@ -1,17 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { fetchProviders, fetchTones } from "../api/fetchOptions";
 import { paraphrase } from "../api/paraphraser";
 
-export const useApp = (defaultProvider: string, defaultTone: string) => {
+export const useApp = () => {
   const [alertMsg, setAlertMsg] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState(defaultProvider);
-  const [selectedTone, setSelectedTone] = useState(defaultTone);
+  const [providers, setProviders] = useState<string[]>([]);
+  const [tones, setTones] = useState<string[]>([]);
+  const [selectedProvider, setSelectedProvider] = useState("");
+  const [selectedTone, setSelectedTone] = useState("");
   const [textToParaphrase, setTextToParaphrase] = useState("");
   const [paraphraseResult, setParaphraseResult] = useState("");
   const [awaitingResult, setAwaitingResult] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
+
+  useEffect(() => {
+    (async () => {
+      const fetched = await fetchProviders(); 
+      setProviders(fetched);
+      setSelectedProvider(fetched[0]);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const fetched = await fetchTones(); 
+      setTones(fetched);
+      setSelectedTone(fetched[0]);
+    })();
+  }, []);
 
   const clearResults = () => {
     setParaphraseResult("");
@@ -93,6 +112,8 @@ export const useApp = (defaultProvider: string, defaultTone: string) => {
   return {
     alertMsg,
     alertVisible,
+    providers,
+    tones,
     selectedProvider,
     selectedTone,
     paraphraseResult,
