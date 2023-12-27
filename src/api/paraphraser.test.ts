@@ -5,7 +5,9 @@ import { anyObject } from "../utils/types";
 import { paraphrase } from "./paraphraser";
 
 describe("paraphrase", () => {
-  it("makes the expected fetch call to server", async () => {
+  it("makes the expected fetch call and returns result", async () => {
+    const dummyResult = "I am currently experiencing hunger. May I inquire about the menu for this evening's meal?";
+
     mock.method(global, "fetch", async (url: string, reqOptions: anyObject) => {
       expect(reqOptions.method).toEqual("POST");
       expect(url).toEqual(`${import.meta.env.VITE_PARAPHRASER_API_BASE_URL}/paraphrase`);
@@ -15,16 +17,18 @@ describe("paraphrase", () => {
         status: 200,
         ok: true,
         json: async () => {
-          return {};
+          return { result: dummyResult };
         },
       };
     });
 
-    await paraphrase({
+    const result = await paraphrase({
       provider: "chatgpt",
       tone: "formal",
       text: "I'm hungry. What's for dinner?",
     });
+
+    expect(result).toEqual(dummyResult);
 
     mock.reset();
   });
