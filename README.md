@@ -1,6 +1,6 @@
 # paraphraser-ui
 
-Minimalist frontend for [paraphraser-api](https://github.com/gkatanacio/paraphraser-api).
+Minimalist frontend to demonstrate usage of [paraphraser-api](https://github.com/gkatanacio/paraphraser-api).
 
 ![<screenshot>](screenshot.png)
 
