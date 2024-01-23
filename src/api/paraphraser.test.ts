@@ -1,5 +1,5 @@
+import { describe, expect, it } from "vitest";
 import { mock } from "node:test";
-import { describe, it, expect } from 'vitest';
 
 import { anyObject } from "../utils/types";
 import { paraphrase } from "./paraphraser";

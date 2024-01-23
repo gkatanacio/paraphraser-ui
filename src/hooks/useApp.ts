@@ -54,9 +54,7 @@ export const useApp = () => {
     clearResults();
   };
 
-  const attemptParaphrase = async (
-    successCallback: (result: string) => void
-  ) => {
+  const attemptParaphrase = async (successCallback: (result: string) => void) => {
     setAlertVisible(false);
     setAwaitingResult(true);
     try {
@@ -125,5 +123,5 @@ export const useApp = () => {
     handleClickParaphrase,
     handleClickPrev,
     handleClickNext,
-  }
+  };
 };

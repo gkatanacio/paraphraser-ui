@@ -7,9 +7,9 @@ export const RepoLinks = () => {
     <>
       <h5>
         <img
-          src={githubLogo}
           alt="Github logo"
           height={LOGO_SIZE}
+          src={githubLogo}
           width={LOGO_SIZE}
         />
         &nbsp;Repositories

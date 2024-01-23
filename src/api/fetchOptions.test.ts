@@ -1,5 +1,5 @@
+import { describe, expect, it } from "vitest";
 import { mock } from "node:test";
-import { describe, it, expect } from 'vitest';
 
 import { fetchProviders, fetchTones } from "./fetchOptions";
 
