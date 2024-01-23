@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  node:
+    image: node:20-alpine
+    volumes:
+      - .:/code:cached
+    working_dir: /code
+    ports:
+      - "5173:5173"
+    env_file: .env
+
+  aws-cli:
+    image: amazon/aws-cli:2.15.13
+    volumes:
+      - ./dist:/aws/dist:delegated
+    entrypoint: sh
+    env_file: .env.aws

@@ -4,6 +4,12 @@ Minimalist frontend to demonstrate usage of [paraphraser-api](https://github.com
 
 ![<screenshot>](screenshot.png)
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Make](https://www.gnu.org/software/make/)
+
 ## Usage
 
 #### configure
