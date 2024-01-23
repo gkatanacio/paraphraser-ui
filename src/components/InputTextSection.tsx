@@ -1,22 +1,23 @@
-import { Button } from "./Button";
+import { Button } from "react-bootstrap";
+
 import { useInputTextSection } from "../hooks/useInputTextSection";
 
 interface Props {
-  rows: number;
-  cols: number;
   awaitingResult: boolean;
+  cols: number;
   onChange: (text: string) => void;
   onParaphrase: () => void;
+  rows: number;
 }
 
 const maxChars = import.meta.env.VITE_MAX_PARAPHRASE_CHARS;
 
 export const InputTextSection = ({
-  rows,
-  cols,
   awaitingResult,
+  cols,
   onChange,
   onParaphrase,
+  rows,
 }: Props) => {
   const { charCount, handleOnChange } = useInputTextSection(onChange);
 
@@ -26,10 +27,10 @@ export const InputTextSection = ({
         <label>
           <h5>Original</h5>
           <textarea
-            maxLength={maxChars}
-            rows={rows}
             cols={cols}
+            maxLength={maxChars}
             onChange={(e) => handleOnChange(e.target.value)}
+            rows={rows}
           />
         </label>
         &nbsp;
@@ -39,9 +40,10 @@ export const InputTextSection = ({
       </div>
       <div>
         <Button
-          onClick={onParaphrase}
-          color="success"
           disabled={awaitingResult}
+          onClick={onParaphrase}
+          size="sm"
+          variant="outline-success"
         >
           Paraphrase
         </Button>

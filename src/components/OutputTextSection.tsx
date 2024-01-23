@@ -1,57 +1,57 @@
+import { Button, Col, Row } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-import { Button } from "./Button";
-
 interface Props {
-  rows: number;
-  cols: number;
-  text: string;
-  historyIdx: number;
   awaitingResult: boolean;
+  cols: number;
+  historyIdx: number;
   onPrev: () => void;
   onNext: () => void;
+  rows: number;
+  text: string;
 }
 
 export const OutputTextSection = ({
-  rows,
-  cols,
-  text,
-  historyIdx,
   awaitingResult,
+  cols,
+  historyIdx,
   onPrev,
   onNext,
+  rows,
+  text,
 }: Props) => {
   return (
     <>
-      <div className="row">
-        <div className="col" style={{ paddingRight: 0 }}>
+      <Row>
+        <Col>
           <label>
             <h5>Paraphrased</h5>
-            <textarea rows={rows} cols={cols} value={text} readOnly />
+            <textarea cols={cols} readOnly rows={rows} value={text} />
           </label>
-        </div>
-        <div className="col my-auto" style={{ paddingLeft: 8 }}>
+        </Col>
+        <Col className="my-auto p-0">
           <CopyToClipboard text={text}>
             <button className="btn btn-sm btn-secondary">Copy</button>
           </CopyToClipboard>
-        </div>
-      </div>
-      <div>
-        <span>
-          <Button
-            onClick={onPrev}
-            disabled={!text || awaitingResult || historyIdx < 1}
-          >
-            Previous Suggestion
-          </Button>
-        </span>
-        &nbsp;
-        <span>
-          <Button onClick={onNext} disabled={!text || awaitingResult}>
-            Next Suggestion
-          </Button>
-        </span>
-      </div>
+        </Col>
+      </Row>
+      <Button
+        disabled={!text || awaitingResult || historyIdx < 1}
+        onClick={onPrev}
+        size="sm"
+        variant="outline-primary"
+      >
+        Previous Suggestion
+      </Button>
+      &nbsp;
+      <Button
+        disabled={!text || awaitingResult}
+        onClick={onNext}
+        size="sm"
+        variant="outline-primary"
+      >
+        Next Suggestion
+      </Button>
     </>
   );
 };

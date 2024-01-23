@@ -1,10 +1,12 @@
 import "./App.css";
-import { Title } from "./components/Title";
-import { RepoLinks } from "./components/RepoLinks";
-import { Alert } from "./components/Alert";
-import { Dropdown } from "./components/Dropdown";
+
+import { Alert, Col, Container, Row } from "react-bootstrap";
+
+import { DropEnd } from "./components/DropEnd";
 import { InputTextSection } from "./components/InputTextSection";
 import { OutputTextSection } from "./components/OutputTextSection";
+import { RepoLinks } from "./components/RepoLinks";
+import { Title } from "./components/Title";
 import { useApp } from "./hooks/useApp";
 
 const TEXTAREA_ROWS = 10;
@@ -30,68 +32,68 @@ export const App = () => {
   } = useApp();
 
   return (
-    <div className="container">
+    <Container>
       <Title />
-      <div className="row mb-3">
-        <div className="col">
+      <Row className="mb-3">
+        <Col>
           <RepoLinks />
-        </div>
-      </div>
+        </Col>
+      </Row>
       {alertVisible && (
-        <div className="row">
-          <div className="col">
-            <Alert>{alertMsg}</Alert>
-          </div>
-        </div>
+        <Row>
+          <Col>
+            <Alert variant="danger">{alertMsg}</Alert>
+          </Col>
+        </Row>
       )}
-      <div className="row mb-3">
-        <div className="col">
-          <div className="row mb-2">
-            <div className="col">
-              <Dropdown
+      <Row className="mb-3">
+        <Col>
+          <Row className="mb-2">
+            <Col>
+              <DropEnd
                 label="Provider"
+                onSelectOption={handleSelectProvider}
                 options={providers}
                 selectedOption={selectedProvider}
-                onSelectOption={handleSelectProvider}
               />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <Dropdown
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <DropEnd
                 label="Tone"
+                onSelectOption={handleSelectTone}
                 options={tones}
                 selectedOption={selectedTone}
-                onSelectOption={handleSelectTone}
               />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="row mb-4">
-        <div className="col">
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row className="mb-4">
+        <Col>
           <InputTextSection
-            rows={TEXTAREA_ROWS}
-            cols={TEXTAREA_COLS}
             awaitingResult={awaitingResult}
+            cols={TEXTAREA_COLS}
             onChange={setTextToParaphrase}
             onParaphrase={handleClickParaphrase}
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <OutputTextSection
             rows={TEXTAREA_ROWS}
-            cols={TEXTAREA_COLS}
-            text={paraphraseResult}
-            historyIdx={historyIdx}
-            awaitingResult={awaitingResult}
-            onPrev={handleClickPrev}
-            onNext={handleClickNext}
           />
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <OutputTextSection
+            awaitingResult={awaitingResult}
+            cols={TEXTAREA_COLS}
+            historyIdx={historyIdx}
+            onNext={handleClickNext}
+            onPrev={handleClickPrev}
+            rows={TEXTAREA_ROWS}
+            text={paraphraseResult}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
