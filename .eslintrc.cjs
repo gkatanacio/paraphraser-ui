@@ -1,0 +1,32 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+  ],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["react-refresh"],
+  rules: {
+    "semi": "error",
+    "quotes": [
+      "error",
+      "double",
+      { "avoidEscape": true }
+    ],
+    "sort-imports": ["error", {
+      "ignoreCase": true,
+      "allowSeparatedGroups": true,
+    }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-key": "off",
+    "react/jsx-sort-props": "error",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+  },
+}
