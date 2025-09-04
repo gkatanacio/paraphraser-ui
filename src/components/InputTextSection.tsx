@@ -29,7 +29,7 @@ export const InputTextSection = ({
           <textarea
             cols={cols}
             maxLength={maxChars}
-            onChange={(e) => handleOnChange(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleOnChange(e.target.value)}
             rows={rows}
           />
         </label>

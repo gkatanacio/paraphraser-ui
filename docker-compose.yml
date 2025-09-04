@@ -1,8 +1,6 @@
-version: "3"
-
 services:
   node:
-    image: node:20-alpine
+    image: node:24-alpine
     volumes:
       - .:/code:cached
     working_dir: /code
